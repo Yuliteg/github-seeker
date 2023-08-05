@@ -60,6 +60,8 @@ const InfoText = styled.span`
 `;
 
 const BioContainer = styled.div`
+  overflow: auto; 
+  white-space: pre-line;
   padding: 3%;
 
   h3 {

@@ -1,10 +1,19 @@
+import { ClipLoader } from "react-spinners";
+import styled from "styled-components";
 
 const Loading = () => {
   return (
-    <div>
-     Loading... 
-    </div>
-  )
-}
+    <SpinnerWrapper>
+      <ClipLoader color="#5A5A5A" loading={true} size={70} />
+    </SpinnerWrapper>
+  );
+};
 
-export default Loading
+export default Loading;
+
+const SpinnerWrapper = styled.div`
+  margin-top: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

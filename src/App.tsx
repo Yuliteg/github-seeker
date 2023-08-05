@@ -25,7 +25,7 @@ function App() {
           <TitleContainer>
             <Title bold>GitHub Seeker</Title>
             <Subtitle bold>The best App for searching users!</Subtitle>
-          </TitleContainer> 
+          </TitleContainer>
           <SearchInput />
           <UserCard user={user} />
         </div>
@@ -49,7 +49,9 @@ const MainContainer = styled.section`
   padding: 2% 10%;
   gap: 2%;
 
-  @media (max-width: 800px) {
+  @media (max-width: 1024px) {
+    margin-bottom: 6%;
+    gap: 0;
     .github-img {
       display: none;
     }
@@ -61,6 +63,6 @@ const TitleContainer = styled.div`
 `;
 
 const GithubImage = styled.img`
-  width: 450px;
+  max-width: 30vw;
   margin-top: 10%;
 `;
