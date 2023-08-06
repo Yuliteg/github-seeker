@@ -98,6 +98,22 @@ const ButtonContainer = styled.div`
   margin-top: 5px;
 `;
 
+const LinkButton = styled.a`
+  display: inline-block;
+  background-color: #28282b;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-left: 5px;
+  }
+`;
+
 export {
   Wrapper,
   Card,
@@ -111,4 +127,5 @@ export {
   InfoText,
   BioContainer,
   ButtonContainer,
+  LinkButton,
 };

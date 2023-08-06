@@ -1,7 +1,8 @@
+import { FC } from "react";
 import { ClipLoader } from "react-spinners";
 import styled from "styled-components";
 
-const Loading = () => {
+const Loading: FC = () => {
   return (
     <SpinnerWrapper>
       <ClipLoader color="#5A5A5A" loading={true} size={70} />

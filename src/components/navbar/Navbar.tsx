@@ -1,7 +1,8 @@
 import { Wrapper } from "./NavbarStyles";
 import logoImg from "../../assets/images/github-character.png";
+import { FC } from "react";
 
-const Navbar = () => {
+const Navbar : FC = () => {
   return (
     <Wrapper>
       <img src={logoImg} alt="GitHub Seeker Logo" className="logo-img" />

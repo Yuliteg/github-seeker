@@ -3,6 +3,7 @@ import styled from "styled-components";
 interface TypographyProps {
   size?: string;
   fontWeight?: string;
+  textalign?: string;
 }
 
 export const Button = styled.button`
@@ -30,6 +31,7 @@ export const Title = styled.h1<TypographyProps>`
 export const Subtitle = styled.h3<TypographyProps>`
   font-size: 25px;
   font-weight: ${(props) => props.fontWeight || "normal"};
+  text-align: ${(props) => props.textalign || "normal"};
 `;
 
 export const BodyText = styled.p<TypographyProps>`

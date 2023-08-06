@@ -1,5 +1,4 @@
-import { Typhography, Button } from "../../globalStyles";
-import userAvatar from "../../assets/images/pngwing.com (19).png";
+import { Typhography } from "../../globalStyles";
 import {
   Wrapper,
   Card,
@@ -13,48 +12,74 @@ import {
   BioContainer,
   ButtonContainer,
   InfoTextContainer,
+  LinkButton,
 } from "./UserCardStyle";
 import { MdLocationCity, MdBusiness, MdLanguage } from "react-icons/md";
+import { FC } from "react";
+import { User } from "../../model/profile";
+import { RiExternalLinkLine } from "react-icons/ri";
 
-const UserCard = ({ user }: any) => {
+interface UserCardProps {
+  user: User | null;
+}
+
+const UserCard: FC<UserCardProps> = ({ user }) => {
+  if (!user) {
+    return null;
+  }
+  const {
+    avatarUrl,
+    name,
+    username,
+    company,
+    location,
+    website,
+    bio,
+    githubLink,
+  } = user;
+
   return (
     <Wrapper>
       <Card>
         <Header>
-          <Avatar src={userAvatar} alt={user.name} />
-          <UserName>{user.name}</UserName>
+          <Avatar src={avatarUrl} alt={name} />
+          <UserName>{name || username}</UserName>
         </Header>
         <ContentWrapper>
-          <InfoColumn>
-            <InfoRow>
-              <MdBusiness fontSize="23" color="var(--icon-grey)" />
-              <InfoTextContainer>
-                <InfoText>{user.company}</InfoText>
-              </InfoTextContainer>
-            </InfoRow>
-            <InfoRow>
-              <MdLocationCity fontSize="23" color="var(--icon-grey)" />
-              <InfoTextContainer>
-                <InfoText>{user.location}</InfoText>
-              </InfoTextContainer>
-            </InfoRow>
-            <InfoRow>
-              <MdLanguage fontSize="23" color="var(--icon-grey)" />
-              <InfoTextContainer>
-                <InfoText>{user.website}</InfoText>
-              </InfoTextContainer>
-            </InfoRow>
-          </InfoColumn>
+          {company && location && website && (
+            <InfoColumn>
+              <InfoRow>
+                <MdBusiness fontSize="23" color="var(--icon-grey)" />
+                <InfoTextContainer>
+                  <InfoText>{company}</InfoText>
+                </InfoTextContainer>
+              </InfoRow>
+              <InfoRow>
+                <MdLocationCity fontSize="23" color="var(--icon-grey)" />
+                <InfoTextContainer>
+                  <InfoText>{location}</InfoText>
+                </InfoTextContainer>
+              </InfoRow>
+              <InfoRow>
+                <MdLanguage fontSize="23" color="var(--icon-grey)" />
+                <InfoTextContainer>
+                  <InfoText>{website}</InfoText>
+                </InfoTextContainer>
+              </InfoRow>
+            </InfoColumn>
+          )}
           <BioContainer>
             <h3>User Biography</h3>
             <Typhography style={{ fontSize: "var(--font-size-large)" }}>
-              {user.bio || "The user does not have bio"}
+              {bio || "The user does not have bio"}
             </Typhography>
           </BioContainer>
         </ContentWrapper>
       </Card>
       <ButtonContainer>
-        <Button>GitHub Profile</Button>
+        <LinkButton href={githubLink} target="_blank" rel="noopener noreferrer">
+          GitHub Profile <RiExternalLinkLine />
+        </LinkButton>
       </ButtonContainer>
     </Wrapper>
   );

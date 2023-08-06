@@ -1,10 +1,23 @@
 import styled from "styled-components";
 import { Button, Input } from "../globalStyles";
+import { FC } from "react";
 
-const SearchInput = () => {
+import { useDispatch } from "react-redux";
+import { fetchProfile } from "../api/fetchProfile";
+import { AppDispatch } from "../redux/configureStore";
+
+const SearchInput: FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const username = (e.target as HTMLFormElement).search.value;
+    dispatch(fetchProfile(username));
+  };
+
   return (
     <Wrapper>
-      <Form>
+      <Form onSubmit={handleSearch}>
         <Input type="text" name="search" placeholder="Search user..." />
         <Button type="submit">Search</Button>
       </Form>

@@ -7,24 +7,14 @@ import { BsFillSearchHeartFill } from "react-icons/bs";
 import UserCard from "./components/userCard/UserCard";
 import UserInfoCard from "./components/UserInfoCard ";
 import { useSelector } from "react-redux";
-import {RootState} from "./redux/configureStore"
-
-const userCustom = {
-  name: "John Doe",
-  username: "johndoe",
-  avatarUrl: "https://example.com/avatar.jpg",
-  bio: "Lorem ipsum dolor sit amet, consectetur adipisi ipsum dolor sit amet, consectetur adipisicipsum dolor sit amet, consectetur adipisiiipsum dolor sit amet, consectetur adipisinipsum dolor sit amet, consectetur adipisigv elit. Praesentium fugiat harum vitae vero quam laudantium eligendi asperiores hic nobis neque.",
-  company: "Acme Inc.",
-  location: "New York",
-  website: "https://johndoe.com",
-  githubLink: "https://github.com/johndoe",
-  repo: 10,
-  followers: 100,
-  following: 13,
-};
+import { RootState } from "./redux/configureStore";
+import Loading from "./components/Loading";
+import { AiOutlineWarning } from "react-icons/ai";
 
 function App() {
- const user = useSelector((state: RootState) => state.user);
+  const { user, isLoading, error } = useSelector(
+    (state: RootState) => state.user
+  );
 
   return (
     <>
@@ -39,15 +29,31 @@ function App() {
           </TitleContainer>
           <SearchInput />
 
-          <UserContentWrapper>
-            <UserCard user={userCustom} />
-            <UserInfoCard user={userCustom} />
-          </UserContentWrapper>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <UserContentWrapper>
+              <UserCard user={user} />
+              <UserInfoCard user={user} />
+            </UserContentWrapper>
+          )}
 
-          <SearchMessage>
-            <Subtitle>Please, search your user</Subtitle>
-            <BsFillSearchHeartFill size={25} color="var(--icon-grey)" />
-          </SearchMessage>
+          {!user && !isLoading && !error && (
+            <SearchMessage>
+              <Subtitle>Please, search your user</Subtitle>
+              <BsFillSearchHeartFill size={25} color="var(--icon-grey)" />
+            </SearchMessage>
+          )}
+
+          {error && (
+            <Subtitle textalign="center">
+              {error.message || "An error occurred."}
+              <AiOutlineWarning
+                style={{ marginLeft: "3%", color: "#dc143c" }}
+                size="28"
+              />
+            </Subtitle>
+          )}
         </div>
         <div>
           <GithubImage
@@ -101,4 +107,8 @@ const SearchMessage = styled.div`
 const UserContentWrapper = styled.div`
   display: flex;
   gap: 2%;
+
+  @media (max-width: 952px) {
+    flex-direction: column;
+  }
 `;
