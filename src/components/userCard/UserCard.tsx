@@ -12,6 +12,7 @@ import {
   InfoText,
   BioContainer,
   ButtonContainer,
+  InfoTextContainer,
 } from "./UserCardStyle";
 import { MdLocationCity, MdBusiness, MdLanguage } from "react-icons/md";
 
@@ -26,22 +27,28 @@ const UserCard = ({ user }: any) => {
         <ContentWrapper>
           <InfoColumn>
             <InfoRow>
-              <MdBusiness fontSize="23" color="#5A5A5A" />
-              <InfoText>{user.company}</InfoText>
+              <MdBusiness fontSize="23" color="var(--icon-grey)" />
+              <InfoTextContainer>
+                <InfoText>{user.company}</InfoText>
+              </InfoTextContainer>
             </InfoRow>
             <InfoRow>
-              <MdLocationCity fontSize="23" color="#5A5A5A" />
-              <InfoText>{user.location}</InfoText>
+              <MdLocationCity fontSize="23" color="var(--icon-grey)" />
+              <InfoTextContainer>
+                <InfoText>{user.location}</InfoText>
+              </InfoTextContainer>
             </InfoRow>
             <InfoRow>
-              <MdLanguage fontSize="23" color="#5A5A5A" />
-              <InfoText>{user.website}</InfoText>
+              <MdLanguage fontSize="23" color="var(--icon-grey)" />
+              <InfoTextContainer>
+                <InfoText>{user.website}</InfoText>
+              </InfoTextContainer>
             </InfoRow>
           </InfoColumn>
           <BioContainer>
             <h3>User Biography</h3>
             <Typhography style={{ fontSize: "var(--font-size-large)" }}>
-              {user.bio}
+              {user.bio || "The user does not have bio"}
             </Typhography>
           </BioContainer>
         </ContentWrapper>

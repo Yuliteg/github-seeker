@@ -36,17 +36,22 @@ const UserName = styled.h2`
 `;
 
 const ContentWrapper = styled.section`
+  min-width: 40rem;
   display: flex;
   flex-grow: 1;
+
+  @media (max-width: 768px) {
+    min-width: 25rem;
+  }
 `;
 
 const InfoColumn = styled.section`
+  width: 50%;
   padding: 3%;
   border-right: 1px solid grey;
   display: flex;
   flex-direction: column;
   gap: 10%;
-  width: 100%;
 `;
 
 const InfoRow = styled.div`
@@ -59,8 +64,25 @@ const InfoText = styled.span`
   color: #28282b;
 `;
 
+const InfoTextContainer = styled.div`
+  overflow: auto;
+  white-space: pre-line;
+
+  scrollbar-width: thin;
+  scrollbar-color: #cccccc transparent;
+
+  &::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #cccccc; 
+    border-radius: 3px; 
+  }
+`;
+
 const BioContainer = styled.div`
-  overflow: auto; 
+  overflow: auto;
   white-space: pre-line;
   padding: 3%;
 
@@ -85,6 +107,7 @@ export {
   ContentWrapper,
   InfoColumn,
   InfoRow,
+  InfoTextContainer,
   InfoText,
   BioContainer,
   ButtonContainer,
