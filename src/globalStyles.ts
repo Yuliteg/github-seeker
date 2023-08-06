@@ -16,12 +16,12 @@ export const Button = styled.button`
 `;
 
 export const Input = styled.input`
+  border: 2px solid
+    ${(props) => (props.className === "error" ? "red" : "none")};
   padding: 10px;
   background-color: hsl(212, 33%, 93%);
-  border: none;
   flex-grow: 1;
 `;
-
 
 export const Title = styled.h1<TypographyProps>`
   font-size: 35px;
