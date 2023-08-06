@@ -1,17 +1,15 @@
-import styled from "styled-components";
 import { AiFillFolderOpen } from "react-icons/ai";
 import { BsFillPeopleFill, BsFillPersonCheckFill } from "react-icons/bs";
 import { FC } from "react";
-import { User } from "../model/profile";
+import { User } from "../../model/profile";
+import { InfoArticle, UserInfo } from "./userInfoCardStyle";
 
 interface UserInfoCardProps {
   user: User | null;
 }
 
 const UserInfoCard: FC<UserInfoCardProps> = ({ user }) => {
-  if (!user) {
-    return null;
-  }
+  if (!user) return null;
 
   const { repo, followers, following } = user;
 
@@ -32,32 +30,5 @@ const UserInfoCard: FC<UserInfoCardProps> = ({ user }) => {
     </UserInfo>
   );
 };
-
-const UserInfo = styled.div`
-  margin-top: 4%;
-  display: flex;
-  flex-direction: column;
-  gap: 3%;
-  width: 13vw;
-
-  @media (max-width: 952px) {
-    width: 100%;
-    gap: 10px;
-  }
-`;
-
-const InfoArticle = styled.article`
-  background-color: hsl(211, 30%, 90%);
-  border: 1px solid grey;
-  border-radius: 10px;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  svg {
-    margin-right: 5px;
-  }
-`;
 
 export default UserInfoCard;

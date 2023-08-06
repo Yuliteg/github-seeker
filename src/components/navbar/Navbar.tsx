@@ -1,4 +1,4 @@
-import { Wrapper } from "./NavbarStyles";
+import { Wrapper } from "./navbarStyles";
 import logoImg from "../../assets/images/github-character.png";
 import { FC } from "react";
 

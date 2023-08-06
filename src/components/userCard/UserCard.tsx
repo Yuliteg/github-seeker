@@ -13,7 +13,7 @@ import {
   ButtonContainer,
   InfoTextContainer,
   LinkButton,
-} from "./UserCardStyle";
+} from "./userCardStyle";
 import { MdLocationCity, MdBusiness, MdLanguage } from "react-icons/md";
 import { FC } from "react";
 import { User } from "../../model/profile";
@@ -24,9 +24,8 @@ interface UserCardProps {
 }
 
 const UserCard: FC<UserCardProps> = ({ user }) => {
-  if (!user) {
-    return null;
-  }
+  if (!user) return null;
+
   const {
     avatarUrl,
     name,

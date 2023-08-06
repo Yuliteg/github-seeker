@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import Navbar from "./components/navbar/Navbar";
-import SearchInput from "./components/SearchInput";
+import SearchInput from "./components/searchInput/SearchInput";
 import searchImg from "./assets/images/pngwing.com (17).png";
 import { Subtitle, Title } from "./globalStyles";
 import { BsFillSearchHeartFill } from "react-icons/bs";
 import UserCard from "./components/userCard/UserCard";
-import UserInfoCard from "./components/UserInfoCard ";
+import UserInfoCard from "./components/userInfoCard/UserInfoCard ";
 import { useSelector } from "react-redux";
 import { RootState } from "./redux/configureStore";
-import Loading from "./components/Loading";
+import Loading from "./components/helpers/Loading";
 import { AiOutlineWarning } from "react-icons/ai";
 
 function App() {
