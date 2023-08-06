@@ -1,4 +1,4 @@
-# GitHub User Search App 🔍
+# GitHub Seeker App 🔍
 
 ![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white)
 ![Redux Toolkit](https://img.shields.io/badge/-Redux%20Toolkit-purple?logo=redux&logoColor=white)
