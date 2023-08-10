@@ -4,7 +4,7 @@ import { FC } from "react";
 
 const Navbar : FC = () => {
   return (
-    <Wrapper>
+    <Wrapper role="navigation">
       <img src={logoImg} alt="GitHub Seeker Logo" className="logo-img" />
       <h3> GitHub Seeker</h3>
     </Wrapper>

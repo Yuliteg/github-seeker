@@ -48,3 +48,4 @@ const profileSlice = createSlice({
 
 export const { clearUser } = profileSlice.actions;
 export default profileSlice.reducer;
+export { profileSlice };
