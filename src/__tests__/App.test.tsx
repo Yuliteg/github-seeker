@@ -1,9 +1,9 @@
-import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
+import { screen } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
 
 import App from "../App";
 import { profileSlice } from "../redux/userProfileSlice";
+import { renderWithProviders } from "../redux/test-utils";
 
 describe("Testing for App.tsx component", () => {
   let store: ReturnType<typeof configureStore>;
@@ -17,11 +17,7 @@ describe("Testing for App.tsx component", () => {
   });
 
   it('Shows "GitHub Seeker Header"', () => {
-    render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    renderWithProviders(<App />, { store });
 
     const headings = screen.getAllByRole("heading", { name: "GitHub Seeker" });
     const headingWithText = headings.find(
@@ -32,12 +28,25 @@ describe("Testing for App.tsx component", () => {
   });
 
   it("Renders the Navbar component", () => {
-    render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    renderWithProviders(<App />, { store });
+
     const navbar = screen.getByRole("navigation");
     expect(navbar).toBeInTheDocument();
+  });
+
+  it("displays error message when there is an error", async () => {
+    renderWithProviders(<App />, {
+      preloadedState: {
+        user: {
+          user: null,
+          isLoading: false,
+          error: {
+            message: "An error occurred!",
+            documentation_url: "https://github.com/",
+          },
+        },
+      },
+    });
+    expect(screen.getByText("An error occurred!")).toBeInTheDocument();
   });
 });

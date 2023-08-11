@@ -6,13 +6,12 @@ import { Subtitle, Title } from "./globalStyles";
 import { BsFillSearchHeartFill } from "react-icons/bs";
 import UserCard from "./components/userCard/UserCard";
 import UserInfoCard from "./components/userInfoCard/UserInfoCard ";
-import { useSelector } from "react-redux";
-import { RootState } from "./redux/configureStore";
+import { RootState, useAppSelector } from "./redux/configureStore";
 import Loading from "./components/helpers/Loading";
 import { AiOutlineWarning } from "react-icons/ai";
 
 function App() {
-  const { user, isLoading, error } = useSelector(
+  const { user, isLoading, error } = useAppSelector(
     (state: RootState) => state.user
   );
 
