@@ -28,13 +28,15 @@ function App() {
           </TitleContainer>
           <SearchInput />
 
-          {isLoading ? (
+          {isLoading && !user ? (
             <Loading />
           ) : (
-            <UserContentWrapper>
-              <UserCard user={user} />
-              <UserInfoCard user={user} />
-            </UserContentWrapper>
+            user && (
+              <UserContentWrapper data-testid="user-content-wrapper">
+                <UserCard user={user} />
+                <UserInfoCard user={user} />
+              </UserContentWrapper>
+            )
           )}
 
           {!user && !isLoading && !error && (

@@ -4,8 +4,8 @@ import styled from "styled-components";
 
 const Loading: FC = () => {
   return (
-    <SpinnerWrapper>
-      <ClipLoader id="loader" color="#5A5A5A" loading={true} size={70} />
+    <SpinnerWrapper data-testid="loader">
+      <ClipLoader color="#5A5A5A" loading={true} size={70} />
     </SpinnerWrapper>
   );
 };
